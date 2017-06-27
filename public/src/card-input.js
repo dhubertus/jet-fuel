@@ -14,7 +14,6 @@ $('.url-btn').on('click', () => {
     body:JSON.stringify({
       title:title,
       url:url,
-      visits:0,
       url_shortened:"blah",
       updated_at: month+" "+day+" "+year,
       created_at: month+" "+day+" "+year
