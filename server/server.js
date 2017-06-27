@@ -15,10 +15,12 @@ app.set('port',3000)
 
 app.use(express.static(path.join(__dirname,'../public')))
 
+//grabs home page sends html
 app.get('/',(req,res) => {
   res.sendFile(__dirname+'../public/index.html')
 })
 
+//receives all categories that exist in db -- for drop down menu
 app.get('/api/v1/categories', (request, response) => {
   database('categories').select()
     .then(categories => {
@@ -29,15 +31,33 @@ app.get('/api/v1/categories', (request, response) => {
     });
 });
 
+//for selecting and displaying a specific folder
+app.get('/api/v1/single-folder', (request, response) => {
+  database('categories').where({
+    folder: request.query.folder
+  })
+    .then(specificFolder => {
+      response.status(200).json(specificFolder);
+    })
+    .catch(error => {
+      console.error('error: ', error)
+    });
+});
+
+
+
+//addes a flder to the categories section of db
 app.post('/api/v1/categories', (request, response) => {
   const category = request.body;
   database('categories')
-  .insert(category,'name')
+  .insert(category,'folder')
   .then(list => response.send(list))
-  .catch(error => {console.log(error)
+  .catch(error => {
+    response.send(error)
   });
 })
 
+//gets all short and extended urls in server
 app.get('/api/v1/url', (request, response) => {
   database('url').select()
     .then(url => {
@@ -48,6 +68,7 @@ app.get('/api/v1/url', (request, response) => {
   });
 });
 
+//posts a new url NEED to add it to folder
 app.post('/api/v1/url', (request, response) => {
   const newUrl = request.body;
   console.log(newUrl);

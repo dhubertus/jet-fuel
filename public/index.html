@@ -8,12 +8,10 @@
   <body>
     <h1>Jet Fuel</h1>
 
-    <form class='folder-input' action='index.html' method='post'>
-      <input type='text' placeholder='Create Category'>
-      <input type='text' placeholder='Title'>
-      <input type='text' placeholder='Paste Url'>
-      <button type='button' name='button'>Create</button>
-    </form>
+    <div class='folder-input'>
+      <input id='folder-input' type='text' placeholder='Create Category'>
+      <button id='create-folder-btn' type='button' name='button'>Create</button>
+    </div>
 
     <section class='dropdown'>
       <button class='dropbtn'>Dropdown</button>
@@ -24,21 +22,22 @@
       </div>
     </section>
 
-    <form class="" action="index.html" method="post">
+    <div class="">
       <label for="popularity">Popularity:</label>
       <input type="radio" name="filter" value="Popularity">
       <label for="popularity">Most Recent:</label>
       <input type="radio" name="filter" value="Most Recent">
-    </form>
+    </div>
 
     <section>
 
-    <form class="card-input" action="index.html" method="post">
+    <div class="card-input">
       <input class="title-input" type='text' placeholder='Title'>
       <input class="url-input" type='text' placeholder='Paste Url'>
-      <button id='thing' class="url-btn" type='button' name='button'>Create</button>
-    </form>
+      <button class="url-btn" type='button' name='button'>Create</button>
+    </div>
 
+      <h3 id='folder-title'></h3>
       <section id='card-holder'>
       </section>
     </section>
@@ -48,6 +47,7 @@
     <script src='./src/dropdown.js' ></script>
     <script src='./src/card-holder.js' ></script>
     <script src='src/card-input.js'></script>
+    <script src='src/create-folder.js'></script>
 
   </body>
 </html>
