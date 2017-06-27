@@ -68,16 +68,34 @@ app.get('/api/v1/url', (request, response) => {
   });
 });
 
+
+app.get('/api/v1/folder-urls', (request, response) => {
+  database('url').where({
+    categories_id: request.query.id
+  })
+    .then(specificFolder => {
+      console.log(specificFolder,'specificFolder');
+      response.status(200).json(specificFolder);
+    })
+    .catch(error => {
+      console.error('error: ', error)
+    });
+});
+
+
 //posts a new url NEED to add it to folder
 app.post('/api/v1/url', (request, response) => {
   const newUrl = request.body;
-  console.log(newUrl);
   database('url')
-  .insert(newUrl,'title')
-  .then(newUrl => response.send(newUrl))
+  .insert(newUrl,'categories_id')
+
+
+  .then(parentId => response.send(parentId))
   .catch(error => {console.log(error)
   });
 })
+
+
 
 app.listen(app.get('port'))
 
