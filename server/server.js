@@ -89,7 +89,6 @@ app.get('/www.jetfuel/:shortUrl.com', (request, response) => {
   .then(url => {
     response.redirect(301, url[0].url)
   })
-
 })
 
 
