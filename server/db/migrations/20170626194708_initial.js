@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.integer('visits')
       table.string('folder').unique();
-      table.timestamps(true);
+      table.timestamps(true,true);
     }),
 
     knex.schema.createTable('url', function(table) {
@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
       table.integer('categories_id').unsigned()
       table.foreign('categories_id')
       .references('categories.id');
-      table.timestamps(true);
+      table.timestamps(true,true);
     })
   ])
 };

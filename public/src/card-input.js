@@ -1,7 +1,3 @@
-const d     = new Date()
-const month = d.getMonth()+1
-const day   = d.getDate()
-const year  = d.getFullYear()
 const ACCESS_TOKEN = 'ad6420e4b76dd1083ad965a0e4840952bb746972'
 
 
@@ -31,7 +27,7 @@ fetch(base_url)
 .then(item => bitly = item.data.link_lookup[0].aggregate_link || "error")
 .then(() => {
     if(bitly==="error"){
-      alert("excuse me sah! please place a full http://url where needed! ")
+      alert("excuse me sah! please place a full http://url address where needed! ")
       return null
     }
   fetch(`/api/v1/single-folder?folder=${parentId.html()}`)
@@ -44,9 +40,7 @@ fetch(base_url)
         categories_id: obj[0].id,
         title:title,
         url:url,
-        url_shortened:bitly,
-        updated_at: month+" "+day+" "+year,
-        created_at: month+" "+day+" "+year
+        url_shortened:bitly
       })
     }
   )

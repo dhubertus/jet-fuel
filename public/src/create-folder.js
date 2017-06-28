@@ -27,7 +27,6 @@ createFolderBtn.on('click', () => {
           // .then(list => console.log(list,"woo"))
         })
     } else {
-      console.log('added');
       folderTitle.html(folderInput.val())
     }
   })
