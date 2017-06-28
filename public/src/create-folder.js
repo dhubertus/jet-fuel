@@ -42,7 +42,6 @@ createFolderBtn.on('click', () => {
           })
         })
     } else {
-      console.log('added');
       folderTitle.html(folderInput.val())
     }
   })

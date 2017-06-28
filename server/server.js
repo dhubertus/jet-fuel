@@ -74,7 +74,6 @@ app.get('/api/v1/folder-urls', (request, response) => {
     categories_id: request.query.id
   })
     .then(specificFolder => {
-      console.log(specificFolder,'specificFolder');
       response.status(200).json(specificFolder);
     })
     .catch(error => {
