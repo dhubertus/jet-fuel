@@ -1,5 +1,19 @@
 const ACCESS_TOKEN = 'ad6420e4b76dd1083ad965a0e4840952bb746972'
 
+const prependSingleCard = (array) => {
+
+  array.forEach((obj, i) => {
+    $('#card-holder').prepend(
+      `<article id='${Date.now()} ${5}' class='single-card'>
+        <h4>${obj.title}</h4>
+        <a href='${obj.url}' target='_blank'>${obj.url_shortened}</a>
+      </article>`
+    )
+  })
+}
+
+
+
 
 $('.url-btn').on('click', () => {
   const title = $('.title-input').val()
@@ -41,15 +55,18 @@ fetch(base_url)
         title:title,
         url:url,
         url_shortened:bitly
+        })
+      }
+    )
+    .then(obj => obj.json())
+    .then(obj => {
+      fetch(`/api/v1/folder-urls?id=${obj[0]}`)
+      .then(list => list.json())
+      .then(list => {
+        console.log(list)
+        prependCard(list)
       })
-    }
-  )
-  .then(obj => obj.json())
-  .then(obj => {
-    fetch(`/api/v1/folder-urls?id=${obj[0]}`)
-    .then(list => list.json())
-    .then(list => console.log(list,"list!!!!"))
-   })
+    })
   })
  })
 })

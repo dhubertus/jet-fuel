@@ -15,11 +15,11 @@ $('#thing').on('click', () => {
   prependNewCard(newObj.title, newObj.url)
 })
 
-$('document').ready(() => {
-  fakeArray.forEach((obj, i) => {
-    prependNewCard(obj.title, obj.url)
-  })
-})
+// $('document').ready(() => {
+//   fakeArray.forEach((obj, i) => {
+//     prependNewCard(obj.title, obj.url)
+//   })
+// })
 
 const prependNewCard = (title, url) => {
   cardHolder.prepend(
