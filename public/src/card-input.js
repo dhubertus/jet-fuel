@@ -1,6 +1,7 @@
 const ACCESS_TOKEN = 'ad6420e4b76dd1083ad965a0e4840952bb746972'
 
 const prependSingleCard = (array) => {
+  $('#card-holder').html("")
 
   array.forEach((obj, i) => {
     $('#card-holder').prepend(
@@ -11,9 +12,6 @@ const prependSingleCard = (array) => {
     )
   })
 }
-
-
-
 
 $('.url-btn').on('click', () => {
   const title = $('.title-input').val()
@@ -64,7 +62,7 @@ fetch(base_url)
       .then(list => list.json())
       .then(list => {
         console.log(list)
-        prependCard(list)
+        prependSingleCard(list)
       })
     })
   })
