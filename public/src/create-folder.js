@@ -34,7 +34,6 @@ createFolderBtn.on('click', () => {
       fetch(`/api/v1/single-folder?folder=${folderInput.val()}`)
         .then((res) => res.json())
         .then((obj) => {
-          console.log(obj,"object in folder")
           folderTitle.html(obj[0].folder)
           fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
           .then(list => list.json())
