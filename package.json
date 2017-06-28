@@ -1,7 +1,6 @@
 {
   "name": "jet-fuel",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +15,16 @@
     "knex": "^0.13.0",
     "path": "^0.12.7",
     "pg": "^6.4.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhubertus/jet-fuel.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/dhubertus/jet-fuel/issues"
+  },
+  "homepage": "https://github.com/dhubertus/jet-fuel#readme",
+  "description": ""
 }
