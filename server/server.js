@@ -81,6 +81,17 @@ app.get('/api/v1/folder-urls', (request, response) => {
     });
 });
 
+//redirects to actual website
+app.get('/www.jetfuel/:shortUrl.com', (request, response) => {
+  database('url').where({
+    url_shortened: `www.jetfuel/${request.params.shortUrl}.com`
+  })
+  .then(url => {
+    response.redirect(301, url[0].url)
+  })
+
+})
+
 
 //posts a new url NEED to add it to folder
 app.post('/api/v1/url', (request, response) => {
