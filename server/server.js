@@ -48,6 +48,7 @@ app.get('/api/v1/single-folder', (request, response) => {
 
 //addes a flder to the categories section of db
 app.post('/api/v1/categories', (request, response) => {
+  console.log(request.body,"API casdfasf")
   const category = request.body;
   database('categories')
   .insert(category,'folder')
