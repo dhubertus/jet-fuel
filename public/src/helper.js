@@ -69,16 +69,24 @@ $('#search-url').on('keyup',(e) => {
   const array = $('.single-card').find("h4")
 
   array.filter(stuff => {
-    let cardTitle = array[stuff].innerHTML
+    const cardTitle = array[stuff].innerHTML
     let show = true;
+    const searchValue = e.target.value
+    const leng = searchValue.length
 
-    for(let i = 0; i<e.target.value.length;i++){
-      if(cardTitle[i]===e.target.value[i]){
-        console.log(cardTitle[i],"title")
-        console.log(e.target.value[i],"e")
-        show = false
-      }
+    if(searchValue.slice(leng)=== cardTitle.slice(leng)
+       && leng <= cardTitle.length){
+      console.log(cardTitle,"cooo")
     }
-    console.log(show,"SHOW")
+    //
+    // for(var j = 0; j <e.target.value.length;j++){
+    //   if(cardTitle[j]===e.target.value[j]){
+    //     // console.log(j,"j")
+    //     // console.log(cardTitle[j],"title")
+    //     // console.log(e.target.value,"e")
+    //     show = false
+    //   }
+    // }
+    // console.log(show,"SHOW")
   })
 })
