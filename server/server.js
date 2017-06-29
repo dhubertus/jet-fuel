@@ -106,6 +106,16 @@ app.post('/api/v1/url', (request, response) => {
 })
 
 
+app.put('/api/v1/url/visit', (req, res) => {
+  const {shortenedUrl} = req.body
+  database('url').where({
+    'url_shortened': shortenedUrl
+  }).select()
+  .update({
+  'visits': database.raw(`visits + 1`)
+  })
+  .then(url => console.log(url))
+})
 
 app.listen(app.get('port'))
 
