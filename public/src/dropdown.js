@@ -25,4 +25,5 @@ $('.dropbtn').on('click', () => {
 $('#dropdown-item-holder').on('click', (e) => {
   const selectedFolder = e.target.closest('h6').innerHTML
   categoryApi(selectedFolder,"drop")
+  $('.url-list').addClass('show')
 })
