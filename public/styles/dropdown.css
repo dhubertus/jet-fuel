@@ -1,8 +1,39 @@
+.dropbtn {
+  margin: 30px 0 0 0;
+  height: 25px;
+  min-height: 25px;
+}
+
+.dropdown{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .dropdown-content, .url-list {
   display: none;
+  max-height: 150px;
+  min-width: 300px;
+  overflow: scroll;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
+.dropdown-item h6 {
+  margin:0;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+
+
+
 .show {
-  display: block;
+  display: flex;
 }
