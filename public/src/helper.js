@@ -23,8 +23,8 @@ $('#card-holder').on('click', (e) => {
      headers:{"Content-Type": "application/json"},
      body:JSON.stringify({
        shortenedUrl:urlShort
-     })
-   })
+    })
+  })
 })
 
 const categoryApi = (input,calltype) => {
