@@ -6,6 +6,7 @@ let toggleDropdown = (array) => {
   let dropdown = $('#dropdown-item-holder')
 
     dropdown.empty()
+
   array.forEach((obj, i) => {
     dropdown.prepend(
       `<div class='dropdown-item'>
@@ -14,7 +15,9 @@ let toggleDropdown = (array) => {
     )
   })
 
+
   dropdown.toggleClass('show')
+
 }
 
 $('.dropbtn').on('click', () => {
@@ -42,6 +45,10 @@ $('#dropdown-item-holder').on('click', (e) => {
       fetch(`/api/v1/single-folder?folder=${ selectedFolder }`)
         .then((res) => res.json())
         .then((obj) => {
+          let folderView = $('.folder-view')
+          if(!$('#folder-title').html().length){
+            folderView.toggleClass('show-folder')
+          }
           folderTitle.html(obj[0].folder)
           fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
           .then(list => list.json())

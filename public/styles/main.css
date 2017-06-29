@@ -1,0 +1,18 @@
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: url('./images/road.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(64, 64, 48, 0.76);
+  color: white;
+}
+
+#title {
+  font-size: 2em;
+}

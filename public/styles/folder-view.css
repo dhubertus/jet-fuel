@@ -1,0 +1,23 @@
+.folder-view {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /*background: red; For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg,rgba(255,0,0,0),rgba(1, 16, 3, 1));
+  /*background: rgba(4, 20, 7, 0.76);*/
+}
+
+.show-folder {
+  display: flex;
+}
+
+#card-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: scroll;
+}

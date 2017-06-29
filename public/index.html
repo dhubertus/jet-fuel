@@ -6,7 +6,7 @@
     <title>Jet Fuel</title>
   </head>
   <body>
-    <h1>Jet Fuel</h1>
+    <h1 id='title'>Jet Fuel</h1>
 
     <div class='folder-input'>
       <input id='folder-input' type='text' placeholder='Create Category'>
@@ -20,14 +20,14 @@
       </div>
     </section>
 
-    <div class="filter">
-      <label for="popularity">Popularity:</label>
-      <input id="popularity-filter" type="radio" name="filter" value="Popularity">
-      <label for="date">Most Recent:</label>
-      <input id="date-filter" type="radio" name="filter" value="Most Recent">
-    </div>
 
-    <section>
+    <section class='folder-view'>
+      <div class="filter">
+        <label for="popularity">Popularity:</label>
+        <input id="popularity-filter" type="radio" name="filter" value="Popularity">
+        <label for="date">Most Recent:</label>
+        <input id="date-filter" type="radio" name="filter" value="Most Recent">
+      </div>
 
     <div class="card-input">
       <input class="title-input" type='text' placeholder='Title'>
