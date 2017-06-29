@@ -2,7 +2,6 @@ const folderInput = $('#folder-input')
 const createFolderBtn = $('#create-folder-btn')
 const folderTitle = $('#folder-title')
 let currentlyClicked = ''
-
 const prependCardTwo = (array) => {
   $('#card-holder').empty()
   array.forEach((obj, i) => {
@@ -15,12 +14,7 @@ const prependCardTwo = (array) => {
   })
 }
 
-
 createFolderBtn.on('click', () => {
-  //on submit if folder already exisits return the folder
-  //else create the folder
-  //then set current viewiing to create folder
-console.log(folderInput)
   fetch('/api/v1/categories', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
@@ -33,7 +27,6 @@ console.log(folderInput)
       fetch(`/api/v1/single-folder?folder=${folderInput.val()}`)
         .then((res) => res.json())
         .then((obj) => {
-          console.log(obj);
           folderTitle.html(obj[0].folder)
           fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
           .then(list => list.json())
@@ -41,10 +34,8 @@ console.log(folderInput)
             prependCardTwo(list)
           })
         })
-    } else {
+    }else{
       folderTitle.html(folderInput.val())
     }
   })
-
-
 })
