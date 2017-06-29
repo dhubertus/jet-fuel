@@ -6,11 +6,11 @@ const sortList = (type,list) => {
      })
    }else if (type =="Most Popular"){
       sortedList = list.sort((a,b)=>{
-        return a.visits - b.visits
+        return b.visits - a.visits
    })
  }else{
    sortedList = list.sort((a,b)=>{
-     return b.visits - a.visits
+     return a.visits - b.visits
   })
  }
   return sortedList
@@ -66,14 +66,19 @@ const categoryApi = (input,calltype) => {
 }
 
 $('#search-url').on('keyup',(e) => {
-  // (e.target.value)
-  // const array = $('.single-card').find("h4").html()//why
-  // firstElementChild
+  const array = $('.single-card').find("h4")
 
-  const array = $('.single-card')
+  array.filter(stuff => {
+    let cardTitle = array[stuff].innerHTML
+    let show = true;
 
-  array.map(stuff => {
-    console.log(array)
-    console.log(typeof stuff)
+    for(let i = 0; i<e.target.value.length;i++){
+      if(cardTitle[i]===e.target.value[i]){
+        console.log(cardTitle[i],"title")
+        console.log(e.target.value[i],"e")
+        show = false
+      }
+    }
+    console.log(show,"SHOW")
   })
 })
