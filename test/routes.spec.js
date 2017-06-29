@@ -1,14 +1,15 @@
+process.env.NODE_ENV = 'test';
 const chai = require('chai')
 const should = chai.should()
 const chaiHttp = require('chai-http')
 const server = require('../server/server.js')
 const knex = require('../server/db/knex.js')
+const config = require('../server/knexfile.js')
 
-process.env.NODE_ENV = 'test';
 
-if(process.env.NODE_ENV != 'test') {
-   knex.migrate.latest([config])
-}
+// if(process.env.NODE_ENV != 'test') {
+//    knex.migrate.latest([config])
+// }
 
 chai.use(chaiHttp)
 
@@ -35,35 +36,6 @@ describe('Client Routes', () => {
 })
 
 describe('API Routes', () => {
-  // before((done) => {
-  //   // Run migrations and seeds for test database
-  //   done()
-  // });
-
-  beforeEach((done) => {
-    // Would normally run run your seed(s), which includes clearing all records
-    // from each of the tables
-    // server.locals.students = students;
-    knex.migrate.rollback()
-      .then(() => {
-        knex.migrate.latest()
-          .then(() => {
-            return knex.seed.run()
-              .then(() => {
-                done();
-              })
-          })
-      })
-    done()
-  });
-
-  afterEach((done) => {
-    knex.migrate.rollback()
-      .then(() => {
-        done();
-      });
-    done()
-  });
 
   it('should return all of the categories', (done) => {
     chai.request(server)
@@ -136,6 +108,39 @@ describe('API Routes', () => {
 })
 
 describe('POST Routes', () => {
+
+  // before((done) => {
+  //   // Run migrations and seeds for test database
+  //   done()
+  // });
+
+  beforeEach((done) => {
+    // Would normally run run your seed(s), which includes clearing all records
+    // from each of the tables
+    // server.locals.students = students;
+    knex.migrate.rollback()
+      .then(() => {
+        knex.migrate.latest()
+          .then(() => {
+            return knex.seed.run()
+              // .then(() => {
+              //   done();
+              // })
+          })
+      })
+    done()
+  });
+
+  afterEach((done) => {
+    knex.migrate.rollback()
+      // .then(() => {
+      //   done();
+      // });
+    done()
+  });
+
+
+
   it('should make a new folder' , (done) => {
     chai.request(server)
       .post('/api/v1/categories')
@@ -143,6 +148,9 @@ describe('POST Routes', () => {
         folder: 'newGuy'
       })
       .end((err, res) => {
+        res.should.have.status(201)
+        res.should.be.json;
+        res.body.should.be.a('array');
         console.log(res.body, 'asda');
         done()
       })
