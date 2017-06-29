@@ -3,7 +3,7 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/jetfuel',
     migrations: {
-      directory: './db/migrations'
+      directory: './server/db/migrations'
     },
     seeds: {
       directory: './db/seeds/dev'

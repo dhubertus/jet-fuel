@@ -37,6 +37,11 @@ app.get('/api/v1/single-folder', (request, response) => {
     folder: request.query.folder
   })
     .then(specificFolder => {
+      // console.log(specificFolder, 'asdfas');
+      if(!specificFolder.length) {
+        return response.sendStatus(404)
+      }
+
       response.status(200).json(specificFolder);
     })
     .catch(error => {
@@ -58,16 +63,16 @@ app.post('/api/v1/categories', (request, response) => {
 })
 
 //gets all short and extended urls in server
-app.get('/api/v1/url', (request, response) => {
-  database('url').select()
-    .then(url => {
-      response.status(200).json(url);
-    })
-    .catch(error => {
-      response.status(500).json({error})
-  });
-});
-
+// app.get('/api/v1/url', (request, response) => {
+//   database('url').select()
+//     .then(url => {
+//       response.status(200).json(url);
+//     })
+//     .catch(error => {
+//       response.status(500).json({error})
+//   });
+// });
+//
 
 app.get('/api/v1/folder-urls', (request, response) => {
   database('url').where({
@@ -121,3 +126,5 @@ app.put('/api/v1/url/visit', (request, res) => {
 app.listen(app.get('port'))
 
 console.log("fired away at port " + app.get('port'));
+
+module.exports = app
