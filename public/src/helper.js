@@ -60,6 +60,20 @@ const categoryApi = (input,calltype) => {
           })
       }else{
       folderTitle.html(folderInput.val())
+      $('card-holder').empty()
     }
   })
 }
+
+$('#search-url').on('keyup',(e) => {
+  // (e.target.value)
+  // const array = $('.single-card').find("h4").html()//why
+  // firstElementChild
+
+  const array = $('.single-card')
+
+  array.map(stuff => {
+    console.log(array)
+    console.log(typeof stuff)
+  })
+})
