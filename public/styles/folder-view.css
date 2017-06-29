@@ -1,9 +1,9 @@
 .folder-view {
-  display: none;
+  /*display: none;*/
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  /*height: 500px;*/
   width: 100%;
   background: -webkit-linear-gradient(-90deg,rgba(255,0,0,0),rgba(1, 16, 3, 1));
 }

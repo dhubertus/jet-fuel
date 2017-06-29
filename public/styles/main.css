@@ -18,8 +18,8 @@ body {
 }
 
 #create-folder-view {
-  min-height: 300px;
-  height: 100%;
+  /*min-height: 300px;
+  height: 100%;*/
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -32,4 +32,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.filter{
+  margin-top: 35px;
 }
