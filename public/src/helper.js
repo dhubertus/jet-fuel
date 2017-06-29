@@ -4,11 +4,15 @@ const sortList = (type,list) => {
       sortedList = list.sort((a,b)=>{
        return a.created_at > b.created_at
      })
-   }else{
+   }else if (type =="Most Popular"){
       sortedList = list.sort((a,b)=>{
         return a.visits - b.visits
    })
-  }
+ }else{
+   sortedList = list.sort((a,b)=>{
+     return b.visits - a.visits
+  })
+ }
   return sortedList
 }
 
@@ -47,7 +51,7 @@ const categoryApi = (input,calltype) => {
             .then(list => list.json())
             .then(list => {
               calltype === "drop"? closeDropDown():null
-              if(calltype ==="popular"||"date"){
+              if(calltype ==="Most Popular"|| "Least Popular"||"date"){
                  prependCardTwo(sortList(calltype,list))
                  return null
               }
