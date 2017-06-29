@@ -42,6 +42,8 @@ $('.url-btn').on('click', () => {
       .then(list => list.json())
       .then(list => {
         prependSingleCard(list)
+        const title = $('.title-input').val("")
+        const url = $('.url-input').val("")
       })
     })
   })

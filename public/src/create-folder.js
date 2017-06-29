@@ -15,4 +15,5 @@ const prependCardTwo = (array) => {
 }
 createFolderBtn.on('click', () => {
  categoryApi(folderInput.val())
+ // folderInput.val("") //affects unfortunatly the folders that are already created and doesn't render it propely for list and title
 })
