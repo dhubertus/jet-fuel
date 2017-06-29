@@ -10,9 +10,10 @@
 
     <section id='create-folder-view'>
       <div class='folder-input'>
-        <input id='folder-input' type='text' placeholder='Create Category'>
+        <input id='folder-input' type='text' placeholder='Create/Find Category'>
         <button id='create-folder-btn' type='button' name='button'>Create</button>
       </div>
+
 
       <button class='dropbtn'>Dropdown</button>
       <section class='dropdown'>
@@ -23,6 +24,17 @@
     </section>
 
 
+    <section class="url-list">
+
+      <div class="filter">
+        <label id="most-popular" for="most-popular-filter">Most Popular</label>
+        <input id="most-popular-filter" type="radio" name="filter" value="Popularity">
+        <label  id="least-popular" for="least-popular-filter">Least Popular</label>
+        <input id="least-popular-filter" type="radio" name="filter" value="Popularity">
+        <label for="date">Most Recent:</label>
+        <input id="date-filter" type="radio" name="filter" value="Most Recent">
+        <input id="search-url" type="text" placeholder="search by title"/>
+      </div>
 
     <section class='folder-view'>
       <div class="filter">

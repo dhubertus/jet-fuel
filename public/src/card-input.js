@@ -4,14 +4,13 @@ const prependSingleCard = (array) => {
     $('#card-holder').prepend(
       `<article id='${Date.now()} ${5}' class='single-card'>
         <h4>${obj.title}</h4>
-        <a href='http://${obj.url}' target='_blank'>${obj.url_shortened}</a>
+        <a href='${obj.url}' target='_blank'>${obj.url_shortened}</a>
+        <div>Number of visits: ${obj.visits}</div>
+        <div>Created at : ${obj.created_at}</div>
       </article>`
     )
   })
 }
-
-
-
 
 $('.url-btn').on('click', () => {
   const title = $('.title-input').val()
@@ -44,8 +43,9 @@ $('.url-btn').on('click', () => {
       fetch(`/api/v1/folder-urls?id=${obj[0]}`)
       .then(list => list.json())
       .then(list => {
-        console.log(list)
         prependSingleCard(list)
+        const title = $('.title-input').val("")
+        const url = $('.url-input').val("")
       })
     })
   })

@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.dropdown-content {
+.dropdown-content, .url-list {
   display: none;
   max-height: 150px;
   min-width: 300px;
