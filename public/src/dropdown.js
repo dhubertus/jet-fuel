@@ -1,3 +1,7 @@
+const closeDropDown = () => {
+  $('#dropdown-item-holder').toggleClass('show')
+}
+
 let toggleDropdown = (array) => {
   let dropdown = $('#dropdown-item-holder')
 
@@ -43,6 +47,7 @@ $('#dropdown-item-holder').on('click', (e) => {
           .then(list => list.json())
           .then(list => {
             prependCardTwo(list)
+            closeDropDown()
           })
         })
     } else {

@@ -1,7 +1,5 @@
-const ACCESS_TOKEN = 'ad6420e4b76dd1083ad965a0e4840952bb746972'
-
 const prependSingleCard = (array) => {
-
+    $('#card-holder').empty()
   array.forEach((obj, i) => {
     $('#card-holder').prepend(
       `<article id='${Date.now()} ${5}' class='single-card'>
@@ -36,7 +34,8 @@ $('.url-btn').on('click', () => {
         categories_id: obj[0].id,
         title:title,
         url:url,
-        url_shortened:`www.jetfuel/${shortenedUrl}.com`
+        url_shortened:`www.jetfuel/${shortenedUrl}.com`,
+        visits:0
         })
       }
     )
