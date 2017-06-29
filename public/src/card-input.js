@@ -10,9 +10,6 @@ const prependSingleCard = (array) => {
   })
 }
 
-
-
-
 $('.url-btn').on('click', () => {
   const title = $('.title-input').val()
   const url = $('.url-input').val()
@@ -44,8 +41,9 @@ $('.url-btn').on('click', () => {
       fetch(`/api/v1/folder-urls?id=${obj[0]}`)
       .then(list => list.json())
       .then(list => {
-        console.log(list)
         prependSingleCard(list)
+        const title = $('.title-input').val("")
+        const url = $('.url-input').val("")
       })
     })
   })

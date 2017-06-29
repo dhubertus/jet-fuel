@@ -27,7 +27,7 @@ app.get('/api/v1/categories', (request, response) => {
       response.status(200).json(categories);
     })
     .catch(error => {
-      console.error('error: ', error)
+      response.status(500).json({error})
     });
 });
 
@@ -40,7 +40,7 @@ app.get('/api/v1/single-folder', (request, response) => {
       response.status(200).json(specificFolder);
     })
     .catch(error => {
-      console.error('error: ', error)
+      response.status(500).json({error})
     });
 });
 
@@ -48,7 +48,6 @@ app.get('/api/v1/single-folder', (request, response) => {
 
 //addes a flder to the categories section of db
 app.post('/api/v1/categories', (request, response) => {
-  console.log(request.body,"API casdfasf")
   const category = request.body;
   database('categories')
   .insert(category,'folder')
@@ -65,7 +64,7 @@ app.get('/api/v1/url', (request, response) => {
       response.status(200).json(url);
     })
     .catch(error => {
-      console.error('error: ', error)
+      response.status(500).json({error})
   });
 });
 
@@ -78,7 +77,7 @@ app.get('/api/v1/folder-urls', (request, response) => {
       response.status(200).json(specificFolder);
     })
     .catch(error => {
-      console.error('error: ', error)
+      response.status(500).json({error})
     });
 });
 
@@ -101,20 +100,22 @@ app.post('/api/v1/url', (request, response) => {
 
 
   .then(parentId => response.send(parentId))
-  .catch(error => {console.log(error)
+  .catch(error => {
+    response.status(500).json({error})
   });
 })
 
-
-app.put('/api/v1/url/visit', (req, res) => {
-  const {shortenedUrl} = req.body
+app.put('/api/v1/url/visit', (request, res) => {
+  const {shortenedUrl} = request.body
   database('url').where({
     'url_shortened': shortenedUrl
   }).select()
   .update({
   'visits': database.raw(`visits + 1`)
   })
-  .then(url => console.log(url))
+  .catch(error=> {
+    response.status(500).json({error})
+  })
 })
 
 app.listen(app.get('port'))
