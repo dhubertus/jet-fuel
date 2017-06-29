@@ -5,17 +5,20 @@
 }
 
 .dropdown{
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 
 .dropdown-content, .url-list {
   display: none;
-  max-height: 150px;
+  /*max
+  -height: 150px;
   min-width: 300px;
-  overflow: scroll;
+  overflow: scroll;*/
   flex-direction: column;
   justify-content: center;
   align-items: center;
