@@ -48,6 +48,7 @@ app.get('/api/v1/single-folder', (request, response) => {
 
 //addes a flder to the categories section of db
 app.post('/api/v1/categories', (request, response) => {
+  console.log(request.body,"API casdfasf")
   const category = request.body;
   database('categories')
   .insert(category,'folder')
@@ -105,8 +106,7 @@ app.post('/api/v1/url', (request, response) => {
   });
 })
 
-
-app.put('/api/v1/url/visit', (request, response) => {
+app.put('/api/v1/url/visit', (request, res) => {
   const {shortenedUrl} = request.body
   database('url').where({
     'url_shortened': shortenedUrl

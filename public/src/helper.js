@@ -1,3 +1,17 @@
+const sortList = (type,list) => {
+  let sortedList;
+   if(type == "date"){
+      sortedList = list.sort((a,b)=>{
+       return a.created_at > b.created_at
+     })
+   }else{
+      sortedList = list.sort((a,b)=>{
+        return a.visits - b.visits
+   })
+  }
+  return sortedList
+}
+
 $('#card-holder').on('click', (e) => {
   const parent = e.target.closest('a')
   const urlShort = parent.innerHTML
@@ -13,7 +27,8 @@ $('#card-holder').on('click', (e) => {
    })
 })
 
-fetchCategory(input,sortType){
+const categoryApi = (input,calltype) => {
+  const folderTitle = $('#folder-title')
     fetch('/api/v1/categories', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -24,13 +39,18 @@ fetchCategory(input,sortType){
     .then((res) => res.json())
     .then((obj) => {
       if(obj.name === 'error') {
-        fetch(`/api/v1/single-folder?folder=${folderInput.val()}`)
+        fetch(`/api/v1/single-folder?folder=${input}`)
           .then((res) => res.json())
           .then((obj) => {
             folderTitle.html(obj[0].folder)
             fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
             .then(list => list.json())
             .then(list => {
+              calltype === "drop"? closeDropDown():null
+              if(calltype ==="popular"||"date"){
+                 prependCardTwo(sortList(calltype,list))
+                 return null
+              }
               prependCardTwo(list)
             })
           })
@@ -39,92 +59,3 @@ fetchCategory(input,sortType){
     }
   })
 }
-
-/////////createFolder.js
-// createFolderBtn.on('click', () => {
-//   fetch('/api/v1/categories', {
-//     method: 'POST',
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       folder: folderInput.val() })
-//   })
-//   .then((res) => res.json())
-//   .then((obj) => {
-//     if(obj.name === 'error') {
-//       fetch(`/api/v1/single-folder?folder=${folderInput.val()}`)
-//         .then((res) => res.json())
-//         .then((obj) => {
-//           folderTitle.html(obj[0].folder)
-//           fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
-//           .then(list => list.json())
-//           .then(list => {
-//             prependCardTwo(list)
-//           })
-//         })
-//     }else{
-//       folderTitle.html(folderInput.val())
-//     }
-//   })
-// })
-
-
-/////// dropdown
-// $('#dropdown-item-holder').on('click', (e) => {
-//   const selectedFolder = e.target.closest('h6').innerHTML
-//   fetch('/api/v1/categories', {
-//     method: 'POST',
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       folder: selectedFolder })
-//   })
-//   .then((res) => res.json())
-//   .then((obj) => {
-//     if(obj.name === 'error') {
-//       fetch(`/api/v1/single-folder?folder=${ selectedFolder }`)
-//       .then((res) => res.json())
-//       .then((obj) => {
-//         folderTitle.html(obj[0].folder)
-//         fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
-//         .then(list => list.json())
-//         .then(list => {
-//           prependCardTwo(list)
-//           closeDropDown()
-//         })
-//       })
-//     }else{
-//       folderTitle.html(folderInput.val())
-//     }
-//   })
-// })
-
-////////radio-btn
-
-// fetch('/api/v1/categories', {
-//   method: 'POST',
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({
-//     visits:0,
-//     folder: selectedFolder })
-// })
-// .then((res) => res.json())
-// .then((obj) => {
-//   if(obj.name === 'error') {
-//     fetch(`/api/v1/single-folder?folder=${ selectedFolder }`)
-//       .then((res) => res.json())
-//       .then((obj) => {
-//         folderTitle.html(obj[0].folder)
-//         fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
-//         .then(list => list.json())
-//         .then(list => {
-//           const sortList = list.sort((a,b)=>{
-//             return a.visits - b.visits
-//           })
-//           prependCardTwo(sortList)
-//         })
-//         .catch(err => console.log(err))
-//       })
-//   } else {
-//     folderTitle.html(folderInput.val())
-//   }
-// })
-// })

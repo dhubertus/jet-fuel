@@ -13,29 +13,6 @@ const prependCardTwo = (array) => {
     )
   })
 }
-
 createFolderBtn.on('click', () => {
-  fetch('/api/v1/categories', {
-    method: 'POST',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      folder: folderInput.val() })
-  })
-  .then((res) => res.json())
-  .then((obj) => {
-    if(obj.name === 'error') {
-      fetch(`/api/v1/single-folder?folder=${folderInput.val()}`)
-        .then((res) => res.json())
-        .then((obj) => {
-          folderTitle.html(obj[0].folder)
-          fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
-          .then(list => list.json())
-          .then(list => {
-            prependCardTwo(list)
-          })
-        })
-    }else{
-      folderTitle.html(folderInput.val())
-    }
-  })
+ categoryApi(folderInput.val())
 })
