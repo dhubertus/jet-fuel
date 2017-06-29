@@ -8,17 +8,20 @@
   <body>
     <h1 id='title'>Jet Fuel</h1>
 
-    <div class='folder-input'>
-      <input id='folder-input' type='text' placeholder='Create Category'>
-      <button id='create-folder-btn' type='button' name='button'>Create</button>
-    </div>
-
-    <section class='dropdown'>
-      <button class='dropbtn'>Dropdown</button>
-      <div id='dropdown-item-holder' class='dropdown-content'>
-
+    <section id='create-folder-view'>
+      <div class='folder-input'>
+        <input id='folder-input' type='text' placeholder='Create Category'>
+        <button id='create-folder-btn' type='button' name='button'>Create</button>
       </div>
+
+      <button class='dropbtn'>Dropdown</button>
+      <section class='dropdown'>
+        <div id='dropdown-item-holder' class='dropdown-content'>
+
+        </div>
+      </section>
     </section>
+
 
 
     <section class='folder-view'>
@@ -29,13 +32,16 @@
         <input id="date-filter" type="radio" name="filter" value="Most Recent">
       </div>
 
-    <div class="card-input">
-      <input class="title-input" type='text' placeholder='Title'>
-      <input class="url-input" type='text' placeholder='Paste Url'>
-      <button class="url-btn" type='button' name='button'>Create</button>
-    </div>
+      <div class="card-input">
+        <input class="title-input" type='text' placeholder='Title'>
+        <input class="url-input" type='text' placeholder='Paste Url'>
+        <button class="url-btn" type='button' name='button'>Create</button>
+      </div>
 
-      <h3 id='folder-title'></h3>
+      <div class="folder-title-container">
+        <label>Category:</label>
+        <h3 id='folder-title'></h3>
+      </div>
 
       <section id='card-holder'>
       </section>
