@@ -119,7 +119,6 @@ app.put('/api/v1/url/visit', (request, res) => {
   })
   .then(updatedUrl => {
      res.status(200).json(updatedUrl)
-     location.reload(true)
   })
   .catch(error=> {
     res.status(500).json({error})
