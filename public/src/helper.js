@@ -64,7 +64,10 @@ const categoryApi = (input,calltype) => {
     }
   })
 }
-//
+
+
+//NOTE: current iteration of search functionality <-- not yet functioning properly
+
 // $('#search-url').on('keyup',(e) => {
 //   const array = $('.single-card').find("h4")
 //
@@ -78,15 +81,15 @@ const categoryApi = (input,calltype) => {
 //        && leng <= cardTitle.length){
 //       console.log(cardTitle,"cooo")
 //     }
-//     //
-    // for(var j = 0; j <e.target.value.length;j++){
-    //   if(cardTitle[j]===e.target.value[j]){
-    //     // console.log(j,"j")
-    //     // console.log(cardTitle[j],"title")
-    //     // console.log(e.target.value,"e")
-    //     show = false
-    //   }
-    // }
-    // console.log(show,"SHOW")
-  // })
+//
+//     for(var j = 0; j <e.target.value.length;j++){
+//       if(cardTitle[j]===e.target.value[j]){
+//         console.log(j,"j")
+//         console.log(cardTitle[j],"title")
+//         console.log(e.target.value,"e")
+//         show = false
+//       }
+//     }
+//     console.log(show,"SHOW")
+//   })
 // })
