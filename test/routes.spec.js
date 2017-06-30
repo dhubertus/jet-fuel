@@ -99,9 +99,7 @@ describe('API Routes', () => {
           res.body[0].should.have.property('categories_id');
           res.body[0].categories_id.should.equal(1);
           res.body[0].should.have.property('created_at');
-          res.body[0].created_at.should.equal('2017-06-29T19:46:10.236Z');
           res.body[0].should.have.property('updated_at');
-          res.body[0].updated_at.should.equal('2017-06-29T19:46:10.236Z');
           done()
         })
     })
@@ -148,12 +146,36 @@ describe('POST Routes', () => {
         folder: 'newGuy'
       })
       .end((err, res) => {
-        res.should.have.status(201)
+        res.should.have.status(200)
         res.should.be.json;
         res.body.should.be.a('array');
-        console.log(res.body, 'asda');
+        res.body.should.deep.equal(['newGuy']);
         done()
       })
 
   })
+
+  it('should make a new url' , (done) => {
+
+    chai.request(server)
+      .post('/api/v1/url')
+      .send({
+        title: 'blah',
+        url:"bleep.com",
+        visits:0,
+        url_shortened:"ble",
+        categories_id:"2",
+      })
+      .end((err, res) => {
+        res.should.have.status(200)
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body.length.should.equal(1)
+        res.body[0].should.equal(2)
+        done()
+      })
+  })
+
+  it('/api/v1/url/visit')
+
 })
