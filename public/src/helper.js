@@ -6,11 +6,11 @@ const sortList = (type,list) => {
      })
    }else if (type =="Most Popular"){
       sortedList = list.sort((a,b)=>{
-        return b.visits - a.visits
+        return a.visits - b.visits
    })
  }else{
    sortedList = list.sort((a,b)=>{
-     return a.visits - b.visits
+     return b.visits - a.visits
   })
  }
   return sortedList
@@ -60,25 +60,25 @@ const categoryApi = (input,calltype) => {
           })
       }else{
       folderTitle.html(folderInput.val())
-      $('card-holder').empty()
+      $('#card-holder').empty()
     }
   })
 }
-
-$('#search-url').on('keyup',(e) => {
-  const array = $('.single-card').find("h4")
-
-  array.filter(stuff => {
-    const cardTitle = array[stuff].innerHTML
-    let show = true;
-    const searchValue = e.target.value
-    const leng = searchValue.length
-
-    if(searchValue.slice(leng)=== cardTitle.slice(leng)
-       && leng <= cardTitle.length){
-      console.log(cardTitle,"cooo")
-    }
-    //
+//
+// $('#search-url').on('keyup',(e) => {
+//   const array = $('.single-card').find("h4")
+//
+//   array.filter(stuff => {
+//     const cardTitle = array[stuff].innerHTML
+//     let show = true;
+//     const searchValue = e.target.value
+//     const leng = searchValue.length
+//
+//     if(searchValue.slice(leng)=== cardTitle.slice(leng)
+//        && leng <= cardTitle.length){
+//       console.log(cardTitle,"cooo")
+//     }
+//     //
     // for(var j = 0; j <e.target.value.length;j++){
     //   if(cardTitle[j]===e.target.value[j]){
     //     // console.log(j,"j")
@@ -88,5 +88,5 @@ $('#search-url').on('keyup',(e) => {
     //   }
     // }
     // console.log(show,"SHOW")
-  })
-})
+  // })
+// })
