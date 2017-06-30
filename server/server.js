@@ -4,14 +4,14 @@ const path = require('path')
 const cors = require('express-cors');
 const bodyParser = require('body-parser')
 const environment = process.env.NODE_ENV || 'development';
-const configuration = require('./knexfile')[environment];
+const configuration = require(__dirname + '/knexfile.js')[environment];
 const database = require('knex')(configuration);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set('port',3000)
+app.set('port', process.env.PORT || 3000)
 
 app.use(express.static(path.join(__dirname,'../public')))
 

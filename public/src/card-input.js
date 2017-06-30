@@ -26,7 +26,7 @@ $('.url-btn').on('click', () => {
   fetch(`/api/v1/single-folder?folder=${parentId.html()}`)
   .then((res) => res.json())
   .then(obj => {
-    fetch('http://localhost:3000/api/v1/url',{
+    fetch('/api/v1/url',{
       method:"POST",
       headers:{"Content-Type": "application/json"},
       body:JSON.stringify({
