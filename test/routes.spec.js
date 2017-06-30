@@ -112,30 +112,30 @@ describe('POST Routes', () => {
   //   done()
   // });
 
-  beforeEach((done) => {
-    // Would normally run run your seed(s), which includes clearing all records
-    // from each of the tables
-    // server.locals.students = students;
-    knex.migrate.rollback()
-      .then(() => {
-        knex.migrate.latest()
-          .then(() => {
-            return knex.seed.run()
-              // .then(() => {
-              //   done();
-              // })
-          })
-      })
-    done()
-  });
-
-  afterEach((done) => {
-    knex.migrate.rollback()
-      // .then(() => {
-      //   done();
-      // });
-    done()
-  });
+  // beforeEach((done) => {
+  //   // Would normally run run your seed(s), which includes clearing all records
+  //   // from each of the tables
+  //   // server.locals.students = students;
+  //   knex.migrate.rollback()
+  //     .then(() => {
+  //       knex.migrate.latest()
+  //         .then(() => {
+  //           return knex.seed.run()
+  //             // .then(() => {
+  //             //   done();
+  //             // })
+  //         })
+  //     })
+  //   done()
+  // });
+  //
+  // afterEach((done) => {
+  //   knex.migrate.rollback()
+  //     // .then(() => {
+  //     //   done();
+  //     // });
+  //   done()
+  // });
 
 
 
@@ -176,6 +176,26 @@ describe('POST Routes', () => {
       })
   })
 
-  it('/api/v1/url/visit')
-
+  it('should update visits', (done) => {
+    chai.request(server)
+      .put('/api/v1/url/visit')
+      .send({
+          shortenedUrl:"googs"
+        })
+      .end((err,res) => {
+        res.should.have.status(200)
+        res.body.should.equal(1)
+        done()
+      })
+    chai.request(server)
+      .put('/api/v1/url/visit')
+      .send({
+          shortenedUrl:"googs"
+        })
+      .end((err,res) => {
+        res.should.have.status(200)
+        res.body.should.equal(2)
+        done()
+   })
+ })
 })
