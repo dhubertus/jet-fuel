@@ -111,6 +111,7 @@ app.post('/api/v1/url', (request, response) => {
 })
 
 app.put('/api/v1/url/visit', (request, res) => {
+
   const {shortenedUrl} = request.body
   database('url').where({
     'url_shortened': shortenedUrl
@@ -118,8 +119,11 @@ app.put('/api/v1/url/visit', (request, res) => {
   .update({
   'visits': database.raw(`visits + 1`)
   })
+  .then(updatedUrl => {
+     res.status(200).json(updatedUrl)
+  })
   .catch(error=> {
-    response.status(500).json({error})
+    res.status(500).json({error})
   })
 })
 
