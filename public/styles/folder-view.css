@@ -20,6 +20,7 @@
   overflow: scroll;
   height: 100%;
   max-height: 180px;
+  min-height: 180px;
   width: 100vw;
 }
 
@@ -55,6 +56,21 @@
   text-align: center;
   border-radius: 10px;
   margin-bottom: 20px;
+  border: none;
+  background: c;
+}
+
+#create-folder-btn {
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: #efefef;
+}
+
+#create-folder-btn:hover {
+  background: rgba(255, 255, 255, 0.55);
+  color: #000;
 }
 
 .single-card {
@@ -79,5 +95,5 @@
 }
 
 .single-card a:hover {
-  color: #b79d38;
+  color: #9bcc98;
 }

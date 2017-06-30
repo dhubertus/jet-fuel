@@ -15,6 +15,9 @@ body {
 
 #title {
   font-size: 2em;
+  width: 80%;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.55);
 }
 
 #create-folder-view {
