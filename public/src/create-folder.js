@@ -8,7 +8,7 @@ const prependCardTwo = (array) => {
     $('#card-holder').prepend(
       `<article id='${Date.now()} ${5}' class='single-card'>
         <h4>${obj.title}</h4>
-        <a href='${obj.url}' target='_blank'>${obj.url_shortened}</a>
+        <a href='${obj.url}'>${obj.url_shortened}</a>
         <div id="visits-text">Number of visits: ${obj.visits}</div>
         <div>Created at : ${obj.created_at}</div>
       </article>`
