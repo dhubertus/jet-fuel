@@ -6,11 +6,6 @@ const server = require('../server/server.js')
 const knex = require('../server/db/knex.js')
 const config = require('../server/knexfile.js')
 
-
-// if(process.env.NODE_ENV != 'test') {
-//    knex.migrate.latest([config])
-// }
-
 chai.use(chaiHttp)
 
 describe('Client Routes', () => {
@@ -32,8 +27,8 @@ describe('Client Routes', () => {
         res.should.have.status(404)
         done()
       })
+    })
   })
-})
 
 describe('API Routes', () => {
 
@@ -51,7 +46,7 @@ describe('API Routes', () => {
         res.body[0].id.should.equal(1);
         done()
       })
-  })
+    })
 
   it('should return a single category', (done) => {
     chai.request(server)
@@ -67,7 +62,7 @@ describe('API Routes', () => {
         res.body[0].id.should.equal(1);
         done()
       })
-  })
+    })
 
     it('should return 404 if the folder does not exist', (done) => {
       chai.request(server)
@@ -76,7 +71,7 @@ describe('API Routes', () => {
           res.should.have.status(404)
           done()
         })
-    })
+      })
 
     it('should return a list of urls specific to the folder', (done) => {
       chai.request(server)
@@ -102,8 +97,8 @@ describe('API Routes', () => {
           res.body[0].should.have.property('updated_at');
           done()
         })
+      })
     })
-})
 
 describe('POST Routes', () => {
 
@@ -137,8 +132,6 @@ describe('POST Routes', () => {
   //   done()
   // });
 
-
-
   it('should make a new folder' , (done) => {
     chai.request(server)
       .post('/api/v1/categories')
@@ -152,8 +145,7 @@ describe('POST Routes', () => {
         res.body.should.deep.equal(['newGuy']);
         done()
       })
-
-  })
+    })
 
   it('should make a new url' , (done) => {
 
@@ -174,7 +166,7 @@ describe('POST Routes', () => {
         res.body[0].should.equal(2)
         done()
       })
-  })
+    })
 
   it('should update visits', (done) => {
     chai.request(server)
@@ -196,6 +188,6 @@ describe('POST Routes', () => {
         res.should.have.status(200)
         res.body.should.equal(2)
         done()
-   })
- })
-})
+      })
+    })
+  })

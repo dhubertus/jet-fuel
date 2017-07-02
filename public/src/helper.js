@@ -1,18 +1,19 @@
 const sortList = (type,list) => {
   let sortedList;
-   if(type == "date"){
-      sortedList = list.sort((a,b)=>{
-       return a.created_at > b.created_at
-     })
-   }else if (type =="Most Popular"){
-      sortedList = list.sort((a,b)=>{
-        return a.visits - b.visits
-   })
- }else{
-   sortedList = list.sort((a,b)=>{
-     return b.visits - a.visits
-  })
+   if(type == "date") {
+      sortedList = list.sort((a,b) =>{
+      return a.created_at > b.created_at
+    })
+  } else if (type =="Most Popular") {
+      sortedList = list.sort((a,b) => {
+      return a.visits - b.visits
+    })
+  } else {
+      sortedList = list.sort((a,b) => {
+      return b.visits - a.visits
+    })
  }
+
   return sortedList
 }
 
@@ -58,7 +59,7 @@ const categoryApi = (input,calltype) => {
               prependCardTwo(list)
             })
           })
-      }else{
+      } else {
       folderTitle.html(folderInput.val())
       $('#card-holder').empty()
     }
