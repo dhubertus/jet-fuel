@@ -15,12 +15,12 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(express.static(path.join(__dirname,'../public')))
 
-//grabs home page sends html
+//NOTE:grabs home page sends html
 app.get('/',(req,res) => {
   res.sendFile(__dirname+'../public/index.html')
 })
 
-//receives all categories that exist in db -- for drop down menu
+//NOTE:receives all categories that exist in db -- for drop down menu
 app.get('/api/v1/categories', (request, response) => {
   database('categories').select()
     .then(categories => {
@@ -37,7 +37,6 @@ app.get('/api/v1/single-folder', (request, response) => {
     folder: request.query.folder
   })
     .then(specificFolder => {
-      // console.log(specificFolder, 'asdfas');
       if(!specificFolder.length) {
         return response.sendStatus(404)
       }
@@ -49,9 +48,7 @@ app.get('/api/v1/single-folder', (request, response) => {
     });
 });
 
-
-
-//addes a flder to the categories section of db
+//NOTE:addes a flder to the categories section of db
 app.post('/api/v1/categories', (request, response) => {
   const category = request.body;
   database('categories')
@@ -62,18 +59,7 @@ app.post('/api/v1/categories', (request, response) => {
   });
 })
 
-//gets all short and extended urls in server
-// app.get('/api/v1/url', (request, response) => {
-//   database('url').select()
-//     .then(url => {
-//       response.status(200).json(url);
-//     })
-//     .catch(error => {
-//       response.status(500).json({error})
-//   });
-// });
-//
-
+//NOTE:returns all the urls for a specific folder
 app.get('/api/v1/folder-urls', (request, response) => {
   database('url').where({
     categories_id: request.query.id
@@ -86,7 +72,7 @@ app.get('/api/v1/folder-urls', (request, response) => {
     });
 });
 
-//redirects to actual website
+//NOTE:redirects to actual website
 app.get('/www.jetfuel/:shortUrl.com', (request, response) => {
   database('url').where({
     url_shortened: `www.jetfuel/${request.params.shortUrl}.com`
@@ -96,8 +82,7 @@ app.get('/www.jetfuel/:shortUrl.com', (request, response) => {
   })
 })
 
-
-//posts a new url NEED to add it to folder
+//NOTE:posts a new url NEED to add it to folder
 app.post('/api/v1/url', (request, response) => {
   const newUrl = request.body;
   database('url')
@@ -108,6 +93,7 @@ app.post('/api/v1/url', (request, response) => {
   });
 })
 
+//NOTE:updates visits count
 app.put('/api/v1/url/visit', (request, res) => {
 
   const {shortenedUrl} = request.body
