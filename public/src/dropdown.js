@@ -1,7 +1,8 @@
 const closeDropDown = () => {
   $('#dropdown-item-holder').toggleClass('show')
 }
-let toggleDropdown = (array) => {
+
+const toggleDropdown = (array) => {
   let dropdown = $('#dropdown-item-holder')
   dropdown.empty()
   array.forEach((obj, i) => {
@@ -13,7 +14,6 @@ let toggleDropdown = (array) => {
   })
 
   dropdown.toggleClass('show')
-
 }
 
 $('.dropbtn').on('click', () => {
@@ -26,7 +26,7 @@ $('.dropbtn').on('click', () => {
 
 $('#dropdown-item-holder').on('click', (e) => {
   const selectedFolder = e.target.closest('h6').innerHTML
-  
+
   categoryApi(selectedFolder,"drop")
   $('.url-list').addClass('show')
 })

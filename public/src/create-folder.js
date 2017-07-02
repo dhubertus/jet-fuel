@@ -1,7 +1,8 @@
 const folderInput = $('#folder-input')
 const createFolderBtn = $('#create-folder-btn')
 const folderTitle = $('#folder-title')
-let currentlyClicked = ''
+// let currentlyClicked = ''
+
 const prependCardTwo = (array) => {
   $('#card-holder').empty()
   array.forEach((obj, i) => {
