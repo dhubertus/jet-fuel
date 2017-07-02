@@ -1,40 +1,36 @@
 html,
 body {
-  display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
-  height: 100%;
-  width: 100%;
   background: url('./images/road.jpg');
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(64, 64, 48, 0.76);
   color: #efefef;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 #title {
-  font-size: 2em;
-  width: 80%;
-  text-align: center;
   border-bottom: 2px solid rgba(0, 0, 0, 0.55);
+  font-size: 2em;
+  text-align: center;
+  width: 80%;
 }
 
 #create-folder-view {
-  /*min-height: 300px;
-  height: 100%;*/
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .folder-title-container {
-  display: flex;
-  /*flex-direction: column;*/
-  justify-content: center;
   align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .filter{

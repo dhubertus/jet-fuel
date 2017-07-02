@@ -1,12 +1,10 @@
 .folder-view {
-  font-weight: 300;
-  /*display: none;*/
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  /*height: 500px;*/
-  width: 100%;
   background: -webkit-linear-gradient(-90deg,rgba(255,0,0,0),rgba(1, 16, 3, 1));
+  flex-direction: column;
+  font-weight: 300;
+  justify-content: center;
+  width: 100%;
 }
 
 .show-folder {
@@ -14,35 +12,33 @@
 }
 
 #card-holder {
-  display: flex;
   align-items: center;
-  /*justify-content: center;*/
+  display: flex;
   flex-direction: column;
-  overflow: scroll;
   height: 100%;
   max-height: 180px;
   min-height: 180px;
+  overflow: scroll;
   width: 100vw;
 }
 
 .card-input {
   display: flex;
   justify-content: center;
-  /*width: 50%;*/
 }
 
 .url-btn{
-  margin-top: 10px;
   background: darkseagreen;
-  outline: none;
   border: none;
+  margin-top: 10px;
+  outline: none;
   width: 80px;
 }
 
 .title-input,
 .url-input {
-  margin: 10px 10px 0 0;
   height: 40px;
+  margin: 10px 10px 0 0;
 }
 
 .filter label {
@@ -50,28 +46,28 @@
 }
 
 .folder-input {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-weight: 300;
+  justify-content: center;
 }
 
 #folder-input {
-  height: 30px;
-  width: 500px;
-  text-align: center;
   border-radius: 10px;
-  margin-bottom: 20px;
   border: none;
+  height: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 500px;
 }
 
 #create-folder-btn {
   background: rgba(0, 0, 0, 0.55);
-  border: none;
-  padding: 5px 15px;
   border-radius: 10px;
+  border: none;
   color: #efefef;
+  padding: 5px 15px;
 }
 
 #create-folder-btn:hover {
@@ -80,20 +76,17 @@
 }
 
 .single-card {
-  display: block;
-  /*flex-direction: column;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
-  height: 200px;
   background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: block;
+  height: 200px;
   margin-bottom: 10px;
   padding: 0 30px 30px 30px;
-  border-radius: 10px;
 }
 
 .single-card a {
-  text-decoration: none;
   color: #efefef;
+  text-decoration: none;
 }
 
 .single-card a:visited {
