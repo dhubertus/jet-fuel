@@ -17,13 +17,13 @@ const sortList = (type,list) => {
   return sortedList
 }
 
-$('#card-holder').on('click', (e) => {
-  const parent = e.target.closest('a')
+$("#card-holder").on("click", (e) => {
+  const parent = e.target.closest("a")
   const urlShort = parent.innerHTML
     if(!urlShort){
     return null
    }
-   fetch('/api/v1/url/visit', {
+   fetch("/api/v1/url/visit", {
      method:"PUT",
      headers:{"Content-Type": "application/json"},
      body:JSON.stringify({
@@ -33,9 +33,9 @@ $('#card-holder').on('click', (e) => {
 })
 
 const categoryApi = (input,calltype) => {
-  const folderTitle = $('#folder-title')
-    fetch('/api/v1/categories', {
-      method: 'POST',
+  const folderTitle = $("#folder-title")
+    fetch("/api/v1/categories", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         folder: input
@@ -43,7 +43,7 @@ const categoryApi = (input,calltype) => {
     })
     .then((res) => res.json())
     .then((obj) => {
-      if(obj.name === 'error') {
+      if(obj.name === "error") {
         fetch(`/api/v1/single-folder?folder=${input}`)
           .then((res) => res.json())
           .then((obj) => {
@@ -51,7 +51,10 @@ const categoryApi = (input,calltype) => {
             fetch(`/api/v1/folder-urls?id=${obj[0].id}`)
             .then(list => list.json())
             .then(list => {
-              calltype === "drop"? closeDropDown():null
+              if( calltype === "drop" ) {
+                closeDropDown()
+              }
+              // calltype === "drop"? closeDropDown():null
               if(calltype ==="Most Popular"|| "Least Popular"||"date"){
                  prependCardTwo(sortList(calltype,list))
                  return null
@@ -61,7 +64,7 @@ const categoryApi = (input,calltype) => {
           })
       } else {
       folderTitle.html(folderInput.val())
-      $('#card-holder').empty()
+      $("#card-holder").empty()
     }
   })
 }

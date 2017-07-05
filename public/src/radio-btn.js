@@ -16,5 +16,5 @@ $('#least-popular-filter').on('click',(e) => {
 $('#date-filter').on('click',(e) => {
   const selectedFolder = $('#folder-title').html()
 
-  categoryApi(selectedFolder,"date")
+  categoryApi(selectedFolder, 'date')
 })

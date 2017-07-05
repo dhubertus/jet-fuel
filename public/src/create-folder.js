@@ -1,7 +1,7 @@
 const folderInput = $('#folder-input')
 const createFolderBtn = $('#create-folder-btn')
 const folderTitle = $('#folder-title')
-// let currentlyClicked = ''
+import categoryApi from './helper'
 
 const prependCardTwo = (array) => {
   $('#card-holder').empty()

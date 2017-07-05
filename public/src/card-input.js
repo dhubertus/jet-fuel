@@ -1,6 +1,6 @@
 const prependSingleCard = (array) => {
     $('#card-holder').empty()
-  array.forEach((obj, i) => {
+  array.forEach((obj) => {
     $('#card-holder').prepend(
       `<article id='${Date.now()} ${5}' class='single-card'>
         <h4>${obj.title}</h4>
@@ -16,18 +16,18 @@ $('.url-btn').on('click', () => {
   const title = $('.title-input').val()
   let url = $('.url-input').val()
   const parentId = $('#folder-title')
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let shortenedUrl = "";
-  const endResult = (url.includes(".com")||url.includes(".org")||url.includes(".gov")||url.includes(".edu")||url.includes(".net")||url.includes(".io"))
-  const httpResult =  (url.includes("http://") || url.includes("https://"))
-  const wwwResult = url.includes("www")
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let shortenedUrl = '';
+  const endResult = (url.includes('.com')||url.includes('.org')||url.includes('.gov')||url.includes('.edu')||url.includes('.net')||url.includes('.io'))
+  const httpResult =  (url.includes('http://') || url.includes('https://'))
+  const wwwResult = url.includes('www')
 
   if(!title){
-    alert("please include a title")
+    alert('please include a title')
   }
 
   if(!endResult || !url){
-    alert("pleases insert correct full url: example(https://github.com)")
+    alert('pleases insert correct full url: example(https://github.com)')
     return null
   }
 
@@ -47,8 +47,8 @@ $('.url-btn').on('click', () => {
   .then((res) => res.json())
   .then(obj => {
     fetch('/api/v1/url',{
-      method:"POST",
-      headers:{"Content-Type": "application/json"},
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({
         categories_id: obj[0].id,
         title:title,
@@ -64,10 +64,9 @@ $('.url-btn').on('click', () => {
       .then(list => list.json())
       .then(list => {
         prependSingleCard(list)
-        const title = $('.title-input').val("")
-        const url = $('.url-input').val("")
+        const title = $('.title-input').val('')
+        const url = $('.url-input').val('')
       })
     })
   })
 })
-//
