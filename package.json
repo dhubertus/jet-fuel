@@ -14,7 +14,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-cors": "0.0.3",
-    "git-validation": "file:///Users/davehubertus/Desktop/turing/git-validation",
+    "git-validation": "https://github.com/dhubertus/git-validation",
     "jquery": "^3.2.1",
     "jshint": "^2.9.5",
     "knex": "^0.13.0",
