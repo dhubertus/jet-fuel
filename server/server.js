@@ -113,6 +113,6 @@ app.put('/api/v1/url/visit', (request, res) => {
 
 app.listen(app.get('port'))
 
-console.log("fired away at port " + app.get('port'));
+console.log('fired away at port ' + app.get('port'));
 
 module.exports = app
