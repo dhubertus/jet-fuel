@@ -33,7 +33,9 @@ describe('API Routes', () => {
 
   before((done) => {
     knex.migrate.latest()
-    knex.seed.run()
+    .then(() => {
+      knex.seed.run()
+    })
     .then(() => {
       done()
     })
