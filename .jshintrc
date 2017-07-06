@@ -1,5 +1,6 @@
 {
   "node": true,
+  "expr": true,
   "esversion": 6,
   "asi" : true,
   "curly": false,

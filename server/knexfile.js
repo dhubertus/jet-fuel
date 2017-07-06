@@ -12,12 +12,12 @@ module.exports = {
   },
   test: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || 'postgres://localhost/jetfuel',
+    connection: process.env.DATABASE_URL || 'postgres://localhost/new_jf_test',
     migrations: {
       directory: 'server/db/migrations'
     },
     seeds: {
-      directory: 'server/db/seeds/dev'
+      directory: 'server/db/seeds/test'
     },
     useNullAsDefault: true
   },
