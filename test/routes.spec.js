@@ -4,7 +4,6 @@ const should = chai.should()
 const chaiHttp = require('chai-http')
 const server = require('../server/server.js')
 const knex = require('../server/db/knex.js')
-// const config = require('../server/knexfile.js')
 
 chai.use(chaiHttp)
 
@@ -15,7 +14,7 @@ describe('Client Routes', () => {
     .get('/')
     .end((err, res) => {
       res.should.have.status(200)
-      // res.should.be.html
+      res.should.be.html
       done()
     })
   })
@@ -33,43 +32,21 @@ describe('Client Routes', () => {
 describe('API Routes', () => {
 
   before((done) => {
-    // Run migrations and seeds for test database
-    // knex.migrate.latest()
     knex.seed.run()
     .then(() => {
       done()
     })
   });
 
-  // before(done => {
-  //   knex.migrate.rollback()
-  //   .then(() => {
-  //     knex.migrate.latest()
-  //     .then(() => {
-  //       return knex.seed.run()
-  //       .then(() => {
-  //         done();
-  //       });
-  //     });
-  //   });
-  // });
-
-  // beforeEach((done) => {
-  //   knex.seed.run()
-  //   done()
-  // })
-
   it('should return all of the categories', (done) => {
     chai.request(server)
       .get('/api/v1/categories')
       .end((err, res) => {
-        // console.log(res.body, 'all cat');
         res.should.have.status(200)
         res.should.be.json;
         res.body.should.be.a('array');
         res.body.length.should.equal(3);
         res.body[0].should.have.property('folder');
-        // res.body[0].folder.should.equal('sports');
         res.body[0].should.have.property('id');
         res.body[0].id.should.equal(1);
         done()
@@ -110,7 +87,6 @@ describe('API Routes', () => {
             return a.id - b.id
           })
 
-          // console.log(res.body, 'url-list');
           res.should.have.status(200)
           res.should.be.json;
           sorted.should.be.a('array');
@@ -136,20 +112,6 @@ describe('API Routes', () => {
 
 describe('POST Routes', () => {
 
-  // before((done) => {
-  //   // Run migrations and seeds for test database
-  //   // knex.migrate.latest()
-  //   knex.seed.run()
-  //   .then(() => {
-  //     done()
-  //   })
-  // });
-
-  // beforeEach((done) => {
-  //   knex.seed.run()
-  //   done()
-  // })
-
   it('should make a new folder' , (done) => {
     chai.request(server)
       .post('/api/v1/categories')
@@ -158,7 +120,6 @@ describe('POST Routes', () => {
         id: 10
       })
       .end((err, res) => {
-        // console.log(res.body, 'new folder');
         res.should.have.status(200)
         res.should.be.json;
         res.body.should.be.a('array');
@@ -193,10 +154,9 @@ describe('POST Routes', () => {
     chai.request(server)
       .put('/api/v1/url/visit')
       .send({
-          shortenedUrl:"googs"
+          shortenedUrl:'googs'
         })
       .end((err,res) => {
-        // console.log(res.body, 'visits 1');
         res.should.have.status(200)
         res.body.should.equal(1)
         done()
@@ -204,10 +164,9 @@ describe('POST Routes', () => {
     chai.request(server)
       .put('/api/v1/url/visit')
       .send({
-          shortenedUrl:"googs"
+          shortenedUrl:'googs'
         })
       .end((err,res) => {
-        // console.log(res.body, 'visits 2');
         res.should.have.status(200)
         res.body.should.equal(3)
         done()
