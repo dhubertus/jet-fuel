@@ -1,7 +1,7 @@
 {
   "short_name": "Jet Fuel",
   "name": "Fake News - Your #2 Source for Fake News",
-  "start_url": "public/index.html?launcher=true",
+  "start_url": "./public/index.html?launcher=true",
   "display": "standalone",
   "theme_color": "rgba(64, 64, 48, 0.76)",
   "background_color": "#f2f2f2",
