@@ -15,6 +15,12 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(express.static(path.join(__dirname,'../public')))
 
+app.get('*',(req,res) => {
+  console.log(req.originalUrl)
+  console.log(req.protocol)
+})
+
+
 //NOTE:grabs home page sends html
 app.get('/',(req,res) => {
   res.sendFile(__dirname+'../public/index.html')
