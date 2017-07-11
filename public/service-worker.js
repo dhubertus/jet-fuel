@@ -1,6 +1,6 @@
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('assets-v1').then(cache => {
+    caches.open('assets-v2').then(cache => {
       return cache.addAll([
         '/',
         '/index.css',
@@ -27,3 +27,17 @@ self.addEventListener('fetch', event => {
       })
   )
 })
+
+self.addEventListener('activate', function(event) {
+  let cacheWhitelist = ['assets-v2'];
+
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
